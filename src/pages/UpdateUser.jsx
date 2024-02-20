@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
-
 const API_URL = 'http://localhost:5005';
 
 const UpdateUser = () => {
@@ -14,7 +13,7 @@ const UpdateUser = () => {
 
     const { id } = useParams();
     const navigate = useNavigate()
-    console.log(id)
+
     useEffect(() => {
         axios
             .get(`${API_URL}/api/users/${id}`)
@@ -27,11 +26,7 @@ const UpdateUser = () => {
             .catch((err) => {
                 console.log('Error getting user: ', err);
             })
-    }, [id])
-
-
-
-
+    }, [id]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -62,8 +57,6 @@ const UpdateUser = () => {
     return (
         <div className='UpdateUser'>
             <h3>Edit user</h3>
-
-
             <label htmlFor='name'>Name</label>
             <input
 
@@ -74,8 +67,6 @@ const UpdateUser = () => {
                 onChange={(e) => setName(e.target.value)}
 
             />
-
-
             <label htmlFor="age">Age</label>
             <input
 
@@ -86,8 +77,6 @@ const UpdateUser = () => {
                 onChange={(e) => setAge(e.target.value)}
 
             />
-
-
             <label htmlFor="age">Email</label>
             <input
 

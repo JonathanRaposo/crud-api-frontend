@@ -15,17 +15,15 @@ const Users = () => {
             console.log('Error fetching users: ', err);
         }
     }
+
     useEffect(() => {
         getUsers()
     }, []);
-
-
 
     return (
         <>
             <h1 style={{ textAlign: "center", fontSize: "60px" }}>User list</h1>
             <div className='Users'>
-
                 {users && users.map((user) => (
                     <Card key={user.id} user={user} />
                 ))}

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+
 const Card = ({ user }) => {
-    console.log(user.id)
     return (
         <Link to={`/users/${user.id}`}>
             <div className='Card'>

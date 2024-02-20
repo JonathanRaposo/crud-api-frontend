@@ -5,7 +5,6 @@ const Error = () => {
         textAlign: 'center',
         fontSize: '70px'
     }
-
     return (
         <div className="Error" style={divStyles}>
             <p>Error: Page not found.</p>

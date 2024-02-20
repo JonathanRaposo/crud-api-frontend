@@ -48,7 +48,6 @@ const User = () => {
                     <p><strong>Name: </strong>{user.name} </p>
                     <p><strong>Age: </strong> {user.age}</p>
                     <p><strong>Email: </strong> {user.email}</p>
-
                     <div>
                         <p className='update-link'>
                             <Link to={`/users/${user.id}/update`}>Update </Link>

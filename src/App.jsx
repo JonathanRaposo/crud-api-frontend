@@ -20,10 +20,7 @@ function App() {
         <Route path="/addUser" element={<AddUser />} />
         <Route path="/users/:id" element={<User />} />
         <Route path="/users/:id/update" element={<UpdateUser />} />
-
         <Route path="*" element={<Error />} />
-
-
       </Routes>
       <Footer />
     </>

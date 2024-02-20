@@ -1,13 +1,10 @@
-
 const HomePage = () => {
-
 
     const paraStyles = {
         margin: '200px auto',
         fontSize: '70px',
         textAlign: 'center'
     }
-
     return (
         <div >
             <p style={paraStyles}>Next generation web framework for node.js.</p>
