@@ -9,7 +9,7 @@ const HomePage = () => {
 
 
     return (
-        <div >
+        <>
             <p className="next-generation">Next generation web framework for node.js.</p>
 
             {items.map((item, i) => (
@@ -22,8 +22,7 @@ const HomePage = () => {
                     </div>
                 </section>
             ))}
-
-        </div>
+        </>
     );
 }
 
