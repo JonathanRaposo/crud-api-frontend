@@ -1,9 +1,10 @@
+
 import textGenerator from "../utils/text-generator";
 
 const HomePage = () => {
     const items = [
-        { value: 'section-a', imgExt: '.png', text: textGenerator, alt: 'coding pic' },
-        { value: 'section-b', imgExt: '.jpeg', text: textGenerator, alt: 'icarus pic' }
+        { value: 'section-a', imgExt: '.png', text: textGenerator(), alt: 'coding pic' },
+        { value: 'section-b', imgExt: '.jpeg', text: textGenerator(), alt: 'icarus pic' }
     ]
 
 
