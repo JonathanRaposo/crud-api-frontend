@@ -1,0 +1,9 @@
+
+export default (() => {
+    return [
+        'Daedalus fashioned two pairs of wings for himself and his son, made of metal feather held to a leather frame by beeswax. Before trying to escape the island, he warned his son to follow his path of flight and not fly too close to the sun or too close to the sea, but, overcome by giddiness while flying, Icarus disobeyed his father and soared higher into the sky. The heat from the sun melted the beeswax, causing the wings to fall apart as he flew. Icarus attempted to stay aloft, but ultimately fell into the sea and drowned. Daedalus wept for his son and called the nearest land Icaria (an island southwest of Samos) in memory of him. Today, the supposed site of his burial on the island bears his name, and the sea near Icaria in which he drowned is called the Icarian Sea',
+
+        "Icarus's father Daedalus, a very talented Athenian craftsman, built a labyrinth for King Minos of Crete near his palace at Knossos to imprison the Minotaur, a half man, half bull monster born of his wife and the Cretan bull.Minos imprisoned Daedalus himself in the labyrinth because he believed Daedalus gave Minos's daughter, Ariadne, a clew in order to help Theseus escape the labyrinth and defeat the MinotaurWith much grief, Daedalus went to the temple of Apollo in Sicily, and hung up his own wings as an offering to never attempt to fly again. According to scholia on Euripides, Icarus fashioned himself greater than Helios, the Sun himself, and the god punished him by directing his powerful rays at him, melting the beeswax. Afterwards, it was Helios who named the Icarian Sea after Icarus."
+
+    ];
+})();
