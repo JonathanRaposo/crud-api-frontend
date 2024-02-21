@@ -1,34 +1,40 @@
-import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Card from '../components/Card.jsx';
-
-const API_URL = 'http://localhost:5005';
+import ApiService from '../api/api-service.js';
 
 const Users = () => {
-    const [users, setUsers] = useState([]);
-
-    const getUsers = async () => {
-        try {
-            const response = await axios.get(`${API_URL}/api/users`);
-            setUsers(response.data);
-        } catch (err) {
-            console.log('Error fetching users: ', err);
-        }
-    }
+    const [users, setUsers] = useState(null);
+    const [errorMessage, setErrorMessage] = useState(undefined);
 
     useEffect(() => {
-        getUsers()
+        ApiService
+            .getUsers()
+            .then(data => {
+                setUsers(data)
+            })
+            .catch(err => {
+                console.log(err)
+                setUsers(null)
+                let msg = err.response.data.message;
+                setErrorMessage(msg);
+            })
     }, []);
 
     return (
-        <>
-            <h1 style={{ textAlign: "center", fontSize: "60px" }}>User list</h1>
-            <div className='Users'>
-                {users && users.map((user) => (
-                    <Card key={user.id} user={user} />
-                ))}
-            </div>
-        </>
+        <div>
+            {errorMessage && <p className='notFound'>{errorMessage}</p>}
+            {users && (
+                <>
+                    {users.length > 0 ? <h1 className='list-heading'>User list</h1> :
+                        <h1 className='list-heading'>Empty list</h1>}
+                    <div className='Users'>
+                        {users && users.map((user) => (
+                            <Card key={user.id} user={user} />
+                        ))}
+                    </div>
+                </>
+            )}
+        </div>
     );
 }
 

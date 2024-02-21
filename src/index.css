@@ -54,7 +54,7 @@ ul li a:hover::after{
   transition-duration: 0.4s;
 }
 
-/* user Card styles */
+
 .Users {
   display: flex;
   flex-wrap: wrap;
@@ -62,6 +62,15 @@ ul li a:hover::after{
   width: 900px;
   margin: 30px auto;
 }
+.list-heading{
+  text-align: center;
+  font-size: 60px;
+}
+.notFound{
+  text-align: center;
+  font-size: 70px;
+}
+/* user Card styles */
 .Card {
   width: 350px;
   height: 140px;
@@ -80,8 +89,8 @@ ul li a:hover::after{
 
 .AddUser,
 .UpdateUser{
-  width: 450px;
-  height: 410px;
+  width: 400px;
+  height: 432px;
   margin: 50px auto;
   text-align: center;
   padding: 10px;
@@ -99,6 +108,8 @@ ul li a:hover::after{
 .AddUser label,
 .UpdateUser label{
   display: block;
+  font-size: 1.2em;
+
 }
 .AddUser input,
 .UpdateUser input {
@@ -109,7 +120,7 @@ ul li a:hover::after{
   border-radius: 6px;
   outline: none;
   font-family:'Italiana';
-  font-size: 1em;
+  font-size: 1.2em;
 
 }
 .AddUser div ,

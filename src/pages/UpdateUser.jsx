@@ -1,55 +1,47 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import axios from 'axios';
-
-const API_URL = 'http://localhost:5005';
+import apiService from '../api/api-service';
 
 const UpdateUser = () => {
-    const [name, setName] = useState('');
+    const [fullName, setFullName] = useState('');
     const [age, setAge] = useState('');
     const [email, setEmail] = useState('');
     const [errorMessage, setErrorMessage] = useState(undefined);
-    const [emailError, setEmailError] = useState(undefined);
+    const [otherError, setOtherError] = useState(undefined);
 
     const { id } = useParams();
     const navigate = useNavigate()
 
     useEffect(() => {
-        axios
-            .get(`${API_URL}/api/users/${id}`)
-            .then((response) => {
-                const { name, age, email } = response.data;
-                setName(name);
-                setAge(age);
-                setEmail(email);
+        apiService
+            .getUser(id)
+            .then((data) => {
+                setFullName(data.fullName);
+                setAge(data.age);
+                setEmail(data.email);
             })
-            .catch((err) => {
-                console.log('Error getting user: ', err);
-            })
+            .catch(err => {
+                console.log(err)
+                setOtherError(err.response.data.message)
+            });
     }, [id]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const updatedUser = {
-            name,
-            age,
-            email
-        }
         try {
-            await axios.put(`${API_URL}/api/users/${id}`, updatedUser);
-            setName('');
+            await apiService.updateUser(id, { fullName, age, email });
+            setFullName('');
             setAge('');
             setEmail('');
             navigate(`/users/${id}`)
         } catch (err) {
             console.log('Error updating user: ', err)
             if (typeof err.response.data.message === 'string') {
-                setEmailError(err.response.data.message);
+                setOtherError(err.response.data.message);
                 return;
 
             }
-
             setErrorMessage(err.response.data.message);
         }
     }
@@ -57,14 +49,14 @@ const UpdateUser = () => {
     return (
         <div className='UpdateUser'>
             <h3>Edit user</h3>
-            <label htmlFor='name'>Name</label>
+            <label htmlFor='fullName'>Full fullName</label>
             <input
 
                 type="text"
-                name="name"
-                id="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                name="fullName"
+                id="fullName"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
 
             />
             <label htmlFor="age">Age</label>
@@ -91,7 +83,7 @@ const UpdateUser = () => {
             {errorMessage && errorMessage.map((msg, i) => (
                 <p key={i} className='errorMessage'>{msg}</p>
             ))}
-            {emailError && <p className='errorMessage'>{emailError}</p>}
+            {otherError && <p className='errorMessage'>{otherError}</p>}
         </div>
     );
 }

@@ -7,7 +7,7 @@ const Error = () => {
     }
     return (
         <div className="Error" style={divStyles}>
-            <p>Error: Page not found.</p>
+            <p>Page not found.</p>
         </div>
     );
 }

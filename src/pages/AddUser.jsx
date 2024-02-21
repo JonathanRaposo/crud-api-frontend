@@ -1,38 +1,30 @@
 /* eslint-disable no-unused-vars */
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-
-
-const API_URL = 'http://localhost:5005';
+import ApiService from '../api/api-service.js';
 
 const AddUser = () => {
-    const [name, setName] = useState('');
+    const [fullName, setFullName] = useState('');
     const [age, setAge] = useState('');
     const [email, setEmail] = useState('');
     const [errorMessage, setErrorMessage] = useState(undefined);
-    const [emailError, setEmailError] = useState(undefined);
+    const [otherError, setOtherError] = useState(undefined);
 
     const navigate = useNavigate();
 
     const handleAddUser = async (e) => {
         e.preventDefault();
 
-        const newUser = {
-            name,
-            age,
-            email
-        }
         try {
-            await axios.post(`${API_URL}/api/users`, newUser);
-            setName('');
+            await ApiService.addUser({ fullName, age, email });
+            setFullName('');
             setAge('');
             setEmail('');
             navigate('/users')
         } catch (err) {
             console.log('Error adding user: ', err)
             if (typeof err.response.data.message === 'string') {
-                setEmailError(err.response.data.message);
+                setOtherError(err.response.data.message);
                 return;
 
             }
@@ -46,14 +38,14 @@ const AddUser = () => {
             <h3>Add user</h3>
 
 
-            <label htmlFor='name'>Name</label>
+            <label htmlFor='fullName'>Full name</label>
             <input
 
                 type="text"
-                name="name"
-                id="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                name="fullName"
+                id="fullName"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
 
             />
 
@@ -85,7 +77,7 @@ const AddUser = () => {
             {errorMessage && errorMessage.map((msg, i) => (
                 <p key={i} className='errorMessage'>{msg}</p>
             ))}
-            {emailError && <p className='errorMessage'>{emailError}</p>}
+            {otherError && <p className='errorMessage'>{otherError}</p>}
         </div>
     );
 }

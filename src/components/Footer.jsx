@@ -3,8 +3,7 @@ const Footer = () => {
     return (
         <footer>
             <a href="https://github.com/JonathanRaposo" target="_blank">
-                <div>&copy; {currentYear} Jonathan Raposo. All rights reserverd.</div>
-
+                <div>&copy;{currentYear}  Jonathan Raposo. All rights reserverd.</div>
             </a>
         </footer>
     );
